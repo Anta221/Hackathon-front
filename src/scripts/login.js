@@ -3,12 +3,12 @@ window.addEventListener('load', function () {
 
     if (sessionStorage.getItem('token')) 
     {
-        window.location = 'projetListe.html';
+        if(typeof sessionStorage.getItem('token') === 'string'){
+            window.location = 'projetListe.html';
+        }
     } 
-    else 
-    {
         console.log('non connecté')
-    }
+    
 });
 
 
