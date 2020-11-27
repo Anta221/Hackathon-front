@@ -17,13 +17,11 @@ window.addEventListener('load', function () {
                             console.log(members)
                         },
                         error: (err) => {
-                            console.log('error')
                             // generate error
                         }
                     });
                 },
                 error: (err) => {
-                    console.log('error')
                     // generate error
                 }
             });
