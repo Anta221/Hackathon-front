@@ -7,7 +7,6 @@ window.addEventListener('load', function () {
             window.location = 'projetListe.html';
         }
     } 
-        console.log('non connecté')
     
 });
 
@@ -31,7 +30,7 @@ function login() {
         }
     });
 
-    
+
     resetForm();
 }
 

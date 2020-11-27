@@ -1,0 +1,16 @@
+.response {
+    margin-bottom: 15px;
+}
+
+.list-member {
+    margin-bottom: 15px;
+
+}
+
+span {
+    font-weight: bold;
+}
+
+.member-name {
+    text-transform: uppercase
+}
