@@ -30,6 +30,8 @@ function login() {
             document.getElementById('error-login').style.display = 'block';
         }
     });
+
+    
     resetForm();
 }
 
