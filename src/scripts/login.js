@@ -3,12 +3,12 @@ window.addEventListener('load', function () {
 
     if (sessionStorage.getItem('token')) 
     {
-        window.location = 'projetListe.html';
+        if(typeof sessionStorage.getItem('token') === 'string'){
+            window.location = 'projetListe.html';
+        }
     } 
-    else 
-    {
         console.log('non connecté')
-    }
+    
 });
 
 
@@ -23,11 +23,15 @@ function login() {
         success: (data) => {
             //    set token in session storage
             sessionStorage.setItem('token', data.token);
+            window.location = 'projetListe.html';
+
         },
         error: () => {
             document.getElementById('error-login').style.display = 'block';
         }
     });
+
+    
     resetForm();
 }
 
