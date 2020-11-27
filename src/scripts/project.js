@@ -6,11 +6,17 @@ window.addEventListener('load', function () {
             $.ajax({
                 type: 'GET',
                 url: `http://localhost:3000/projects/${getUrlParams('project_id')}`,
+                headers :  {
+                    "Authorization": sessionStorage.getItem('token')
+                },
                 success: (project) => {
                     // get project
                     $.ajax({
                         type: 'GET',
                         url: `http://localhost:3000/projects/${getUrlParams('project_id')}/members`,
+                        headers :  {
+                            "Authorization": sessionStorage.getItem('token')
+                        },
                         success: (members) => {
                             // get project
                             generateHtlmProjectDetails(project, members);
