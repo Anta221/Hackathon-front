@@ -32,32 +32,35 @@
           </div>
           <div class="row block-9">
             <div class="col-md-6 pr-md-5">
-              <form action="#">
+              <form id = new-Member action="javascript:newMember()">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Last Name">
+                  <label for="exampleFormControlSelect1">Nom</label>
+                  <input type="text" name = "last_name" class="form-control" placeholder="Last Name">                
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="First Email">
+                  <label for="exampleFormControlSelect1">Prenom</label>
+                  <input type="text" name = "first_name" class="form-control" placeholder="First Name">
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" placeholder="E-mail">
+                  <label for="exampleFormControlSelect1">Email</label>
+                  <input type="email" name = "email" class="form-control" placeholder="E-mail">
                 </div>
                 <div class="form-group">
-                  <input type="tel" class="form-control" placeholder="Telephone">
-                </div>
-                <div class="form-group">
-                  <input type="tel" class="form-control" placeholder="Telephone">
+                  <label for="exampleFormControlSelect1">telephone</label>
+                  <input type="tel" name = "phone_number" class="form-control" placeholder="Telephone">
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Projets</label>
-                  <select class="form-control" id="">
+                  <select class="form-control" name = "project_id" id="select-project">
                     <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  </select>
+                </div><div class="form-group">
+                  <label for="exampleFormControlSelect1">Ecoles</label>
+                  <select class="form-control"  name = "school_id" id="select-ecoles">
+                    <option>1</option>
                   </select>
                 </div>
+                <div data-aos="flip-left" id="error-creation-membre">Pas encore inscrit</div>
                 <div class="form-group">
                   <input type="submit" value="Envoyer" class="btn btn-primary py-3 px-5">
                 </div>
@@ -84,7 +87,7 @@
   <script src="js/scrollax.min.js"></script>
   <script src="js/bootstrap-datepicker.js"></script>
   <script src="js/main.js"></script>
-    
+  <script src="scripts/newMember.js" type="text/javascript"></script>
     
   </body>
-</html>
+</html>  
