@@ -23,6 +23,8 @@ function login() {
         success: (data) => {
             //    set token in session storage
             sessionStorage.setItem('token', data.token);
+            window.location = 'projetListe.html';
+
         },
         error: () => {
             document.getElementById('error-login').style.display = 'block';
