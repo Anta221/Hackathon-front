@@ -1,4 +1,4 @@
-# Register-for-a-Hackathon-front-
+# Hackathon
 Site web pour la gestion d'un hackathon
 
 
@@ -23,13 +23,13 @@ docker-compose build
 docker-compose up 
 ```
 
-Il est accessible à l'adresse suivante : http://localhost:8081.
+Il est accessible à l'adresse suivante : http://localhost:8081
 
-Le port peut etre cahné dans le ficher docker-compose.yml. Il faudra par conséqeunt modifier le nginx.conf
+Le port peut etre changé dans le ficher docker-compose.yml. Il faudra par conséquent modifier le nginx.conf
 
 ## Docker
 
-Stopper container ``` docker-compose stop ```
-Redémarrer container ``` docker-compose restart ```
-Eteindre container ``` docker-compose down ```
+- Stopper container ``` docker-compose stop ```
+- Redémarrer container ``` docker-compose restart ```
+- Eteindre container ``` docker-compose down ```
 
