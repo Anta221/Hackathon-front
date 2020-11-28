@@ -38,10 +38,10 @@ $(document).ready(function(){
                 school_id = id
             }
         }
-       
+        // On créer une variable content le formulaire sérialisé
         var donnees = $(this).serialize();
         donnees +="&school_id="+school_id
-         // On créer une variable content le formulaire sérialisé
+        
         $.ajax({
             url : 'http://localhost:3000/schools/'+school_id+'/projects',
             type : 'POST',
