@@ -1,10 +1,14 @@
-//on recupére la liste des écoles
+//get list of schools
 $.get({
     url: 'http://localhost:3000/schools',
-    success: (schools) => {
+    success: (schools) => 
+    {
+        // generate list of school select html
         generateListSchoolsModal(schools);
     },
-    error: (err) => {
+    error: () => 
+    {
+        // open modla error
         $($('#modal-error')).modal();
     }
 });
@@ -15,14 +19,18 @@ function createProject() {
         type: "POST",
         url: `http://localhost:3000/schools/${$('#select_school_modal').val()}/projects`,
         data: $('#form-project').serialize(),
-        success: (data) => {
+        success: () => 
+        {
+            // project is created
+            // form is reset 
+            // redirection to create member
             document.getElementById('form-project').reset();
             $("#modal-project").modal('show');
-
-
             window.setTimeout("location=('newMembre.html');", 2000);
         },
-        error: () => {
+        error: () => 
+        {
+            // open modla error
             $(".modal-error").modal('show');
 
         }
@@ -31,13 +39,16 @@ function createProject() {
 
 
 function generateListSchoolsModal(schools) {
+    // generate select school in html
     let baseHtml = document.getElementById('select-schools-modal');
-    if (schools.length > 0) {
+
+    if (schools.length > 0) 
+    {
         let label = document.createElement('label');
         label.innerHTML = 'Listes des écoles';
+
         let select = document.createElement('select');
         select.className = 'form-control';
-        // select.name = 'school_id';
         select.id = 'select_school_modal';
         select.value = 'default';
 
@@ -45,19 +56,19 @@ function generateListSchoolsModal(schools) {
         baseHtml.appendChild(select);
 
         schools.forEach((school) => {
+            // generate option to slect html foreach school
             let option = document.createElement('option');
             option.value = school._id;
             option.innerHTML = `${school.name} ${school.location}`;
             select.appendChild(option);
-        })
+        });
     }
-    else {
+    else 
+    {
         let div = document.createElement('div');
         div.innerHTML = 'Aucune école de disponible';
         div.fontWeight = 'bold';
         baseHtml.appendChild(div);
     }
-
-
 }
 
