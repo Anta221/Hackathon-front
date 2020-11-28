@@ -1,24 +1,12 @@
 $(document).ready(function () {
     // get list schools for select 
-    $.get({
-        url: 'http://localhost:3000/schools',
-        success: (schools) => {
-
-            generateListSchools(schools);
-
-        },
-        error: (error) => {
-            $($('#modal-error')).modal();
-
-        }
-    })
-
-
+     getSchools();
 
 });
 
 function generateListSchools(schools) {
-    console.log('on passs eici geneger les ecoles')
+   $('#list-schools').empty();
+   disableBtnSubmit(true);
     let baseHtml = document.getElementById('list-schools');
     if (schools.length > 0) {
         let label = document.createElement('label');
@@ -66,6 +54,23 @@ $('#list-projects').change(() => {
 });
 
 
+function getSchools(){
+    $.get({
+        url: 'http://localhost:3000/schools',
+        success: (schools) => {
+
+            generateListSchools(schools);
+
+        },
+        error: (error) => {
+            $($('#modal-member-error')).modal();
+
+        }
+    })
+
+
+
+}
 
 function getListProject(project_id) {
 
@@ -79,7 +84,7 @@ function getListProject(project_id) {
 
         },
         error: (error) => {
-            $($('#modal-error')).modal();
+            $($('#modal-member-error')).modal();
 
         }
     })
@@ -139,10 +144,12 @@ function createMember() {
             success: (member) => {
                 resetForm();
                 $($('#modal-member')).modal();
+                getSchools();
 
 
             },
             error: (error) => {
+                $($('#modal-member-error')).modal();
 
 
             }
