@@ -8,7 +8,7 @@ $(document).ready(function () {
 
         },
         error: (error) => {
-            console.log(error)
+            $($('#modal-error')).modal();
 
         }
     })
@@ -18,6 +18,7 @@ $(document).ready(function () {
 });
 
 function generateListSchools(schools) {
+    console.log('on passs eici geneger les ecoles')
     let baseHtml = document.getElementById('list-schools');
     if (schools.length > 0) {
         let label = document.createElement('label');
@@ -54,6 +55,7 @@ function generateListSchools(schools) {
 // Generate list project when user select scholl in select
 $('#list-schools').change(() => {
     const value = $('#list-schools option:selected').val();
+    console.log('on click sur le select', value)
     getListProject(value);
     (value === 'default') ? disableBtnSubmit(true) : disableBtnSubmit(false);
 });
@@ -77,7 +79,7 @@ function getListProject(project_id) {
 
         },
         error: (error) => {
-            console.log(error)
+            $($('#modal-error')).modal();
 
         }
     })
@@ -125,28 +127,28 @@ function createMember() {
     document.getElementById('error-project').style.display = 'none';
 
     const serialize = $('#form-member').serialize();
-        if ($('#list-projects option:selected').val() === 'default') {
-            document.getElementById('error-project').style.display = 'block';
+    if ($('#list-projects option:selected').val() === 'default') {
+        document.getElementById('error-project').style.display = 'block';
 
-        }
-        else {
-
-            $.post({
-                url: `http://localhost:3000/projects/${$('#list-projects option:selected').val()}/members`,
-                data : serialize,
-                success: (member) => {
-                    console.log(member)
-                    resetForm();
-
-                },
-                error: (error) => {
-
-                    console.log(error)
-
-                }
-            })
-        }
     }
+    else {
+
+        $.post({
+            url: `http://localhost:3000/projects/${$('#list-projects option:selected').val()}/members`,
+            data: serialize,
+            success: (member) => {
+                resetForm();
+                $($('#modal-member')).modal();
+
+
+            },
+            error: (error) => {
+
+
+            }
+        })
+    }
+}
 
 
 
@@ -159,6 +161,10 @@ function resetForm() {
     $('#list-schools').empty();
     $('#list-projects').empty();
     disableBtnSubmit(true);
+}
+
+function openModalProject() {
+    $($('#modalProject')).modal();
 }
 
 
