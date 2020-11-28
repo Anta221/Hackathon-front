@@ -37,19 +37,20 @@
           <form id="form-member" action="javascript:createMember()">
             <div class="form-group">
               <label for="exampleFormControlSelect1">Nom</label>
-              <input type="text" name="last_name" class="form-control" placeholder="Last Name">
+              <input type="text" name="last_name" class="form-control"  placeholder="Dupond" required>
             </div>
             <div class="form-group">
               <label for="exampleFormControlSelect1">Prenom</label>
-              <input type="text" name="first_name" class="form-control" placeholder="First Name">
+              <input type="text" name="first_name" class="form-control" placeholder="Paul" required>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlSelect1">Email</label>
-              <input type="email" name="email" class="form-control" placeholder="E-mail">
+              <label for="exampleFormControlSelect1">Mail</label>
+              <input type="email" name="email" class="form-control" placeholder="adresse@mail.xx" required>
             </div>
             <div class="form-group">
-              <label for="exampleFormControlSelect1">telephone</label>
-              <input type="tel" name="phone_number" class="form-control" placeholder="Telephone">
+              <label for="exampleFormControlSelect1">Numéro de téléphone</label>
+              <input type="tel" name="phone_number" class="form-control" placeholder="+33123456789" minlength=12 maxlength=12 
+              pattern="(\+33)[1-9]( *[0-9]{2}){4}" required>
             </div>
           <div class="form-group" id="list-schools"> 
 

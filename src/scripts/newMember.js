@@ -1,14 +1,9 @@
 $(document).ready(function(){
-    //on récupere la liste des ecoles
-    // var tabSchool = []
+    // get list schools for select 
     $.get({
         url: 'http://localhost:3000/schools',
         success: (schools) => {
-            // for(let i = 0; i < response.length; i++){
-            //     const element = response[i]
-            //     tabSchool.push(element._id)
-            // }
-
+     
             generateListSchools(schools);
 
         },
@@ -19,23 +14,7 @@ $(document).ready(function(){
        }) 
 
 
-    //on récupere la liste des projets
-  /*  for(let i = 0; i < tabSchool.length; i++){
-        const element_id = tabSchool[i]
-        var url = `http://localhost:3000/schools/'+element_id+'/projects`
-        console.log(url);
-       $.get({
-            url: `http://localhost:3000/schools/:${element_id}/projects`
-        )
-
-        } 
-    } 
-    
-
-    $.get(
-        url: 'http://localhost:3000/schools/:school_id/projects',
-
-    ) */
+  
 });
 
 function generateListSchools(schools) {
@@ -48,6 +27,7 @@ function generateListSchools(schools) {
         select.name = 'school_id';
         select.id = 'select_school';
         select.value = 'default';
+        select.required = true;
         let optionDefault = document.createElement('option');
         optionDefault.value = "default";
         optionDefault.innerHTML = 'Sélectioner une école'
@@ -71,35 +51,70 @@ function generateListSchools(schools) {
     }
 
  
-
-
-//on recupére la liste des écoles
-$.get({
-    url: 'http://localhost:3000/schools',
-    success: (response) => {
-        // get projects and show this in html select
-        var htmlTab =[];
-        for (let i = 0; i < response.length; i++) {
-            const element = response[i];
-            let html = "";
-                html+='<option>'+element.name+'</option>'
-
-            htmlTab.push(html)
-            nameId = element._id + ":"+ element.name
-            schoolTab.push(nameId)
-        }
-        
-        $("#select").html(htmlTab);
-    },
-    error: (err) => {
-        console.log(err)
-    }
-});
 }
 
+// Generate list project when user select scholl in select
+$('#list-schools').change(() => {
+    console.log('on passe dans le slect ')
+    getListProject($('#list-schools option:selected').val());
+});
 
 
+function getListProject(project_id) {
 
+    $('#list-projects').empty();
+      //get list project
+      $.get({
+        url: `http://localhost:3000/schools/${project_id}/projects_available`,
+        success: (projects) => {
+            console.log(projects)
+            generateListProjects(projects);
+
+        },
+        error: (error) => {
+            console.log(error)
+
+        }
+       }) 
+}
+
+function generateListProjects(projects) {
+    console.log(projects);
+    let baseHtml = document.getElementById('list-projects');
+    if(projects.length > 0) {
+        let label = document.createElement('label');
+        label.innerHTML = 'Listes des projets';
+        let select = document.createElement('select');
+        select.className = 'form-control';
+        select.name = 'project_id';
+        select.id = 'select_project';
+        select.value = 'default';
+        let optionDefault = document.createElement('option');
+        optionDefault.value = "default";
+        optionDefault.innerHTML = 'Sélectioner un projet'
+        select.appendChild(optionDefault);
+        baseHtml.appendChild(label);
+        baseHtml.appendChild(select);
+
+        projects.forEach((project) => {
+            let option = document.createElement('option');
+            option.value = project._id;
+            option.innerHTML = project.name;
+            select.appendChild(option);
+        })
+    }
+    else
+     {
+        console.log('on passe ici')
+        let div = document.createElement('div');
+        div.innerHTML = 'Aucun projet n\'a été trouvé';
+        div.fontWeight = 'bold';
+        div.id = 'error-project';
+        baseHtml.appendChild(div);
+    }
+
+ 
+}
 
 
 
