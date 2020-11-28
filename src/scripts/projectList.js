@@ -15,8 +15,9 @@ window.addEventListener('load', () => {
                 }
             });
         }
-    }else {
-        window.location = 'login.html';
+    } else {
+         window.location = 'login.html';
+
     }
 
 });
