@@ -60,8 +60,11 @@ $(document).ready(function(){
                 dataType : 'json',
                 success : function(response){
                     $(".modal").modal('show');
+                    
+                    $('#modalSchool').modal('hide');
+                     
                     //redirection
-                    window.setTimeout("location=('login.html');" , 3000);
+                    window.setTimeout("location=('login.html');" , 1000);
                 },
                 error : function(err){
                     $("#modalHeader").html('<h5 class="modal-title">ERROR <span style="color: red;"> <i class="fas fa-times"></i></span></h5>')

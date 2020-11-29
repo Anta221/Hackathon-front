@@ -19,6 +19,7 @@ $(document).ready(function(){
                 $("#modalBody").html("<p>Félicitation <br>Votre école a été ajouté avec succès</p>")
                 $('#modalSchool').on('hidden.bs.modal', function () {
                 window.location.reload(true);
+                document.location.href="http://localhost:8081/#inscription"
                 });
                 $('#modalSchool').modal('hide');
 
